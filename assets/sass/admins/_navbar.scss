@@ -1,0 +1,171 @@
+.admin-wrapper{
+    background-color: #f8f8fb;
+    min-height: 100vh;
+    color: #495057;
+
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .page-topbar{
+        height: 70px;
+        z-index: 10000;
+        position: sticky;
+        top: 0;
+        
+        @media screen and (min-width: 768px){
+            margin-left: 250px;
+        }
+
+        .navbar{
+            background: white;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: unset;
+            padding: 0;
+            box-shadow: 0 0.75rem 1.5rem rgb(18 38 63 / 3%);
+
+            & #sidebar-btn{
+                @media screen and (min-width: 768px){
+                    visibility: hidden;
+                }
+
+                i:before{
+                    font-weight: bold !important;
+                }
+            }
+        }
+    }
+
+    
+    .vertical-menu{
+        display: none;
+        width: 250px;
+        background-color: #2a3042;
+        height: 100vh;
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        overflow: overlay;
+        
+        @media screen and (max-width: 768px){
+            box-shadow: 100px 0 5px 100vw rgba(0, 0, 0, 0.3);
+        }
+
+        & .navbar-brand{
+            display: inline-flex;
+            width: 250px;
+            background-color: #2a3042;
+            height: 70px;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            z-index: 10000;
+            color: white;
+        }
+
+        .menu-list{
+            padding: 0;
+            list-style: none;
+            margin: 0;
+
+            .menu-title{
+                color: #6a7187;
+                font-size: 11px;
+                font-weight: bold;
+                padding: 12px 20px;
+                letter-spacing: 1px;
+            }
+
+            .menu-item{
+                width: 100%;
+                                
+                a {
+                    color: #a6b0cf;
+                    padding: .625rem 1.5rem;
+                    display: block;
+                    text-decoration: none;
+                    font-size: 13px;
+                    width: 100%;
+                    transition: all 0.4s;
+
+                    .icon-left{
+                        font-size: 20px;
+                        
+                        &::before{
+                            min-width: 1.7rem;
+                            vertical-align: middle;
+                        }
+                    }
+
+                    .icon-right{
+                        font-size: 13px;
+                        float: right;
+                    }
+                    
+                    .icon-right.expanded{
+                        transform: rotate(90deg);
+                    }
+                }
+
+                .sub-menu{
+                    list-style: none;
+                    padding: 0;
+
+                    &-item{
+                        padding: .4rem 1.5rem .4rem 3.5rem;
+
+                        a{
+                            padding: 0;
+                        }
+                    }
+
+                    &-item.active a{
+                        color: white;
+                    }
+
+                    &.show{
+                        display: block;
+                    }
+                }
+                
+                a:hover{
+                    color: white;
+                }
+
+                &.active{
+                    & > a{
+                        color: white;
+                    }
+                }
+            }
+
+            .menu-item.has-sub-menu.collapsed{
+                .sub-menu{
+                    display: none;
+                }
+            }
+        }
+
+        @media screen and (min-width: 768px){
+            display: block;
+        }
+    }
+
+    .vertical-menu.expanded{
+        display: block;
+    }
+
+    .main{
+        margin-left: 0;
+
+        &-wrapper{
+            padding: 20px;
+        }
+
+        @media screen and (min-width: 768px){
+            margin-left: 250px;
+        }
+    }
+}

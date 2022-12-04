@@ -1,0 +1,15 @@
+{
+    "name": "certify/certify",
+    "autoload": {
+        "psr-4": {
+            "Certify\\Certify\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sudharshan",
+            "email": "sudharshanrms2004@gmail.com"
+        }
+    ],
+    "require": {}
+}
