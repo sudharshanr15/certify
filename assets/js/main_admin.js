@@ -28,4 +28,12 @@ $(document).ready(function(){
     })
 
     /** end of sidebar */
+
+    // data tables
+    let dataTable = $("#data-table")
+    if(dataTable.length > 0){
+        dataTable.DataTable({
+            responsive: true
+        });
+    }
 })
