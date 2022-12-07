@@ -27,7 +27,7 @@ $organizations = $organizations->getAll();
                             <tr>
                                 <th scope="row"><?= $o['id'] ?></th>
                                 <td><?= $o['name'] ?></td>
-                                <img src="<?= $o['logo'] ?>" />
+                                <td><img src="<?= $o['logo'] ?>" /></td>
                             </tr>
                             <?php
                         }

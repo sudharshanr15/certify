@@ -30,7 +30,7 @@ $competition = $competition->getAll();
                                 <th scope="row"><?= $c['id'] ?></th>
                                 <td><?= $c['competition'] ?></td>
                                 <td><?= $c['organization'] ?></td>
-                                <img src="<?= $c['image'] ?>" />
+                                <td><img src="<?= $c['image'] ?>" /></td>
                                 <td><?= $c['year'] ?></td>
                             </tr>
                             <?php
