@@ -1,2 +1,8 @@
 @import "admins/navbar";
 @import "admins/login";
+@import "navbar";
+@import "home";
+
+body h1{
+    min-height: 100vh;
+}

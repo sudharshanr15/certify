@@ -11,7 +11,7 @@ class Competition extends Common{
         $this->table = "competition";
     }
 
-    public function create($competition, $organization, $year, $image=""){
+    public function create($organization, $competition, $image, $year){
         try{
             $query = "INSERT INTO $this->table (organization, competition, image, year) VALUES (:organization, :competition, :image, :year)";
             $stmt = $this->db->prepare($query);

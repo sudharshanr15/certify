@@ -151,4 +151,18 @@
   max-width: 100vw;
 }
 
+.main {
+  padding: 0.5rem;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .main {
+    width: 80%;
+  }
+}
+
+body h1 {
+  min-height: 100vh;
+}
+
 /*# sourceMappingURL=main.css.map */
