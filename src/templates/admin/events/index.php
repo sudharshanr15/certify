@@ -12,7 +12,7 @@ $competition = $competition->getAll();
     <div class="card border-0">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="data-table" class="data-table responsive nowrap">
+                <table id="data-table" class="table data-table responsive nowrap">
                     <thead>
                         <tr>
                             <th scope="col">id</th>
@@ -30,7 +30,7 @@ $competition = $competition->getAll();
                                 <th scope="row"><?= $c['id'] ?></th>
                                 <td><?= $c['competition'] ?></td>
                                 <td><?= $c['organization'] ?></td>
-                                <img src="<?= $c['image'] ?>" />
+                                <td><img src="<?= $c['image'] ?>" /></td>
                                 <td><?= $c['year'] ?></td>
                             </tr>
                             <?php

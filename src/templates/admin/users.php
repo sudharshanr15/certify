@@ -11,7 +11,7 @@ $users = $users->getAll();
     <div class="card border-0">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="data-table" class="data-table responsive nowrap">
+                <table id="data-table" class="table data-table responsive nowrap">
                     <thead>
                         <tr>
                             <th scope="col">id</th>
