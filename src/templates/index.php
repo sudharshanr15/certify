@@ -1,5 +1,6 @@
 <?php
 
+use Certify\Certify\core\certificates\Generate;
 use Certify\Certify\models\Competition;
 use Certify\Certify\models\Organization;
 use Certify\Certify\models\Participants;
@@ -8,9 +9,6 @@ use Certify\Certify\core\SendMail;
 $organizations = new Organization;
 $events = new Competition;
 $participants = new Participants;
-
-$organizations = $organizations->getAll();
-$events = $events->getAll();
 
 if(!empty($_POST)){
     $first_name = $_POST['first_name'] ?? null;
@@ -38,23 +36,28 @@ if(!empty($_POST)){
                 "result" => true,
                 "message" => "Participant Registered successfully"
             ];
-            // echo "<pre>";
-            // var_dump($_SESSION);
-            // echo "</pre>";
-            // exit;
+            $generate = new Generate();
+            $event_name = $events->get($event)['competition'];
+            $winner = "yes";
+            $place = 3;
+            if($winner == "yes"){
+                if($place == 1){
+                    $place = "First";
+                }else if($place == 2){
+                    $place = "Second";
+                }else{
+                    $place = "Third";
+                }
+                $generate->generate_winner_certificate($first_name . " " . $last_name, $degree, $place, $event_name, "2022-23");
+            }else{
+                $generate->generate_participant_certificate($first_name . " " . $last_name, $degree, $event_name, "2022-23");
+            }
         }else{
             $_SESSION['res_message'] = [
                 "result" => false,
                 "message" => "Unable to register user. Please try again!"
             ];
         }
-
-        $send_mail = new SendMail();
-        $result = $send_mail->send($email, "Your certificate", "Send from app");
-        echo "<pre>";
-        var_dump($result);
-        echo "</pre>";
-        exit;
     }else{
         $_SESSION['res_message'] = [
             "result" => false,
@@ -64,6 +67,9 @@ if(!empty($_POST)){
 
     unset($_POST);
 }
+
+$organizations = $organizations->getAll();
+$events = $events->getAll();
 
 ?>
 <div class="main container">
