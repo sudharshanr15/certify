@@ -4,6 +4,10 @@
 @import "navbar";
 @import "home";
 
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 body h1{
     min-height: 100vh;
 }
