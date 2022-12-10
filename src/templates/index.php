@@ -3,6 +3,7 @@
 use Certify\Certify\models\Competition;
 use Certify\Certify\models\Organization;
 use Certify\Certify\models\Participants;
+use Certify\Certify\core\SendMail;
 
 $organizations = new Organization;
 $events = new Competition;
@@ -47,6 +48,13 @@ if(!empty($_POST)){
                 "message" => "Unable to register user. Please try again!"
             ];
         }
+
+        $send_mail = new SendMail();
+        $result = $send_mail->send($email, "Your certificate", "Send from app");
+        echo "<pre>";
+        var_dump($result);
+        echo "</pre>";
+        exit;
     }else{
         $_SESSION['res_message'] = [
             "result" => false,
