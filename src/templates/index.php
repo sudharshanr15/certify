@@ -50,7 +50,7 @@ if(!empty($_POST)){
 
             $certificate = $certificate['image'];
             $cer = new Certificate;
-            $user_id = $participants->getFromUserEmail($email);
+            $user_id = $participants->getFromUserEmail($email)[0]['id'];
             $result = $cer->create($user_id, $certificate);
             if($result['result'] == true){
 
