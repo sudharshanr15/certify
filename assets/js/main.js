@@ -13,4 +13,25 @@ $(document).ready(function(){
             $("#place").attr("disabled", "disabled");
         }
     })
+
+    let organizations_table = $("#organizations-table")
+    if(organizations_table.length > 0){
+        organizations_table.DataTable({
+            responsive: true
+        });
+    }
+    
+    let events_table = $("#events-table")
+    if(events_table.length > 0){
+        events_table.DataTable({
+            responsive: true
+        });
+    }
+    
+    let participants_table = $("#participants-table")
+    if(participants_table.length > 0){
+        participants_table.DataTable({
+            responsive: true
+        });
+    }
 })

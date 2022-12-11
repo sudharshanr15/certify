@@ -158,13 +158,26 @@
 .main {
   padding: 0.5rem;
 }
+.main .section#home .hero-image {
+  padding: 1rem;
+}
+.main .section#home .hero-image img {
+  max-width: 100%;
+}
+.main .section#home .participation-form .card-body {
+  padding: 1.5rem;
+}
+@media screen and (min-width: 768px) {
+  .main .section#home .participation-form .card-body {
+    padding: 3rem;
+  }
+}
+.main .data-table img {
+  height: 75px;
+}
 
 * {
   font-family: "Poppins", sans-serif;
-}
-
-body h1 {
-  min-height: 100vh;
 }
 
 /*# sourceMappingURL=main.css.map */

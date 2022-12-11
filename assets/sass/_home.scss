@@ -1,3 +1,28 @@
 .main{
     padding: 0.5rem;
+
+    .section#home{
+        & .hero-image{
+            padding: 1rem;
+            & img{
+                max-width: 100%;
+            }
+        }
+
+        .participation-form{
+            .card-body{
+                padding: 1.5rem;
+
+                @media screen and (min-width: 768px){
+                    padding: 3rem;
+                }
+            }
+        }
+    }
+
+    .data-table{
+        img{
+            height: 75px;
+        }
+    }
 }

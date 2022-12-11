@@ -114,6 +114,7 @@ if(!empty($_POST)){
 
 $organizations = $organizations->getAll();
 $events = $events->getAll();
+$participants = $participants->getAll();
 
 ?>
 <div class="main container">
@@ -132,15 +133,20 @@ $events = $events->getAll();
     <section class="section pt-5" id="home">
         <div class="row">
             <div class="col-xs-12 col-md-5">
-                <h1>sdf</h1>
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <h1>Fill your details to get your <b>Certificate Instantly</b></h1>
+                    <div class="hero-image w-100">
+                        <img src="/assets/images/hero_image.jpg" alt="">
+                    </div>
+                </div>
             </div>
             <div class="col-xs-12 col-md-7">
                 <form action="" method="POST">
-                    <div class="card border border-0 shadow">
-                        <div class="card-body p-5">
+                    <div class="card border border-0 shadow participation-form">
+                        <div class="card-body">
                             <h4 class="card-title mb-4 fw-bold">Enter your details to Generate Certificate</h4>
                             <div class="row mb-3">
-                                <div class="col-xs-12 col-md-6">
+                                <div class="col-xs-12 col-md-6 mb-3">
                                     <label for="first_name" class="form-label">First Name</label>
                                     <input type="text" id="first_name" class="form-control" name="first_name" required>
                                 </div>
@@ -210,12 +216,117 @@ $events = $events->getAll();
     </section>
     <section class="section" id="organizations">
         <div class="pt-5">
-            <h1>sfsdfsdf</h1>
+            <h2 class="mb-3">Organizations</h2>
+            <div class="card border border-0 shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="organizations-table" class="display data-table responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">Organization Name</th>
+                                    <th scope="col">Organization Logo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                foreach($organizations as $o){
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?= $o['id'] ?></th>
+                                        <td><?= $o['name'] ?></td>
+                                        <td><img src="<?= $o['logo'] ?>" /></td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="events">
+        <div class="pt-5">
+            <h2>Events conducted by Organizations</h2>
+            <div class="card border border-0 shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="events-table" class="display data-table responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">Competition</th>
+                                    <th scope="col">Organization ID</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                foreach($events as $e){
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?= $e['id'] ?></th>
+                                        <td><?= $e['competition'] ?></td>
+                                        <td><?= $e['organization'] ?></td>
+                                        <td><img src="<?= $e['image'] ?>" /></td>
+                                        <td><?= $e['year'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <section class="section" id="participants">
         <div class="pt-5">
-            <h1>sdfsdfsdf</h1>
+            <h2>Participants</h2>
+            <div class="card border border-0 shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="participants-table" class="display data-table responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Degree</th>
+                                    <th scope="col">Organization ID</th>
+                                    <th scope="col">Event ID</th>
+                                    <th scope="col">Is Winner?</th>
+                                    <th scope="col">Place Secured</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                foreach($participants as $p){
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?= $p['id'] ?></th>
+                                        <td><?= $p['first_name'] ?></td>
+                                        <td><?= $p['last_name'] ?></td>
+                                        <td><?= $p['email'] ?></td>
+                                        <td><?= $p['degree'] ?></td>
+                                        <td><?= $p['organization'] ?></td>
+                                        <td><?= $p['competition'] ?></td>
+                                        <td><?= $p['winner'] ? "True" : "False" ?></td>
+                                        <td><?= $p['place'] == 0 ? "False" : $p['place'] ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>
