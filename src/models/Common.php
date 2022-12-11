@@ -53,4 +53,13 @@ class Common{
             return ["result" => false, "message" => $e->getMessage()];
         }
     }
+
+    public function getFromUserEmail($email){
+        $query = "SELECT * FROM $this->table where email=:email";
+        $result = $this->db->prepare($query);
+        $result->bindParam(":email", $email);
+        $result->execute();
+        $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
 }

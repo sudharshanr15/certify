@@ -37,3 +37,9 @@ create table participants(
     created_at datetime default current_timestamp,
     modified_at timestamp default current_timestamp
 );
+
+create table certificate(
+    id int primary key not null auto_increment,
+    user_id int not null,
+    certificate varchar(256) not null
+);
