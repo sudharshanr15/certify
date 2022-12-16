@@ -49,8 +49,10 @@ if($first_name != null && $last_name != null && $email != null && $password !== 
         <div class="card border border-0 shadow">
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img src="/assets/images/login_banner.jpg"
-                alt="login form" class="img-fluid h-100" />
+              <div class="d-flex align-items-center justify-content-center h-100">
+                <img src="/assets/images/login_banner.png"
+                  alt="login form" class="img-fluid" />
+              </div>
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5">
