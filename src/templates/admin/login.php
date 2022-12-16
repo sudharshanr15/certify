@@ -30,8 +30,8 @@ if(isset($_SESSION['email'])){
 ?>
 <section class="login-section d-flex flex-column">
   <a class="navbar-brand m-3" href="/">
-    <i class="bi bi-flower2 fs-4"></i>
-    <span class="fs-4">VARNAM</span>    
+    <span class="nav-icon"><img src="/assets/images/certificate_dark.svg" alt=""></span>
+    <span class="fs-4">APSCE</span>
   </a>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">

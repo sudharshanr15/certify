@@ -60,18 +60,17 @@ if(!empty($_POST)){
                 <html lang="en">
                 <head>
                     <title>Certificate</title>
-                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
                 </head>
                 <body>
-                    <p class="mb-3">Hello,</p>
-                    <p class="mb-3">Your request for certificate is generated successfully!.</p>
-                    <img class="mb-3" src="http://certify.localhost'. $certificate .'" alt="" style="height: 100px">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <a href="http://certify.localhost'. $certificate .'" class="btn btn-primary">View Certificate</a>
+                    <p style="font-size: 24px; text-weight: bold; margin-block: 1rem;">Hello '. $first_name .',</p>
+                    <p>Your request for Certificate is generated successfully.</p>
+                    <img src="http://certify.localhost'. $certificate .'" alt="" style="height: 100px">
+                    <div style="">
+                        <div style="display: inline-block; margin-inline: 0.5rem;">
+                            <a href="http://certify.localhost'. $certificate .'">View Certificate</a>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a href="http://certify.localhost/download/certificate.php?c='. basename($certificate) .'" class="btn btn-primary">Download Certificate</a>
+                        <div style="display: inline-block; margin-inline: 0.5rem;">
+                            <a href="http://certify.localhost/download/certificate.php?c='. basename($certificate) .'">Download Certificate</a>
                         </div>
                     </div>
                 </body>
@@ -84,6 +83,9 @@ if(!empty($_POST)){
                         "result" => true,
                         "message" => "Participant Registered successfully"
                     ];
+
+                    header("Location: /");
+                    exit();
                 }else{
                     $_SESSION['res_message'] = [
                         "result" => false,
@@ -108,8 +110,6 @@ if(!empty($_POST)){
             "message" => "Fill all the required fields in the form"
         ];
     }
-
-    unset($_POST);
 }
 
 $organizations = $organizations->getAll();
@@ -135,8 +135,8 @@ $participants = $participants->getAll();
             <div class="col-xs-12 col-md-5">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
                     <h1>Fill your details to get your <b>Certificate Instantly</b></h1>
-                    <div class="hero-image w-100">
-                        <img src="/assets/images/hero_image.jpg" alt="">
+                    <div class="hero-image w-100 text-center">
+                        <img class="w-75" src="/assets/images/hero_image.jpeg" alt="">
                     </div>
                 </div>
             </div>
@@ -298,7 +298,6 @@ $participants = $participants->getAll();
                                     <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Degree</th>
-                                    <th scope="col">Organization ID</th>
                                     <th scope="col">Event ID</th>
                                     <th scope="col">Is Winner?</th>
                                     <th scope="col">Place Secured</th>
@@ -314,7 +313,6 @@ $participants = $participants->getAll();
                                         <td><?= $p['last_name'] ?></td>
                                         <td><?= $p['email'] ?></td>
                                         <td><?= $p['degree'] ?></td>
-                                        <td><?= $p['organization'] ?></td>
                                         <td><?= $p['competition'] ?></td>
                                         <td><?= $p['winner'] ? "True" : "False" ?></td>
                                         <td><?= $p['place'] == 0 ? "False" : $p['place'] ?></td>

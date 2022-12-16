@@ -176,6 +176,17 @@
   height: 75px;
 }
 
+.navbar {
+  background-color: #222128 !important;
+}
+
+.navbar-brand .nav-icon {
+  height: 50px;
+}
+.navbar-brand .nav-icon img {
+  height: inherit;
+}
+
 * {
   font-family: "Poppins", sans-serif;
 }
