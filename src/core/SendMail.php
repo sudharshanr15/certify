@@ -7,8 +7,8 @@ use PHPMailer\PHPMailer\Exception as MailException;
 
 class SendMail{
     private $mail;
-    private $username = "sudharshan2004buildnet@gmail.com";
-    private $password = "riwkvzwlgxktfixs";
+    private $username = "apscecollege@gmail.com";
+    private $password = "xnubuquoylifnwdf";
 
     public function __construct()
     {
