@@ -27,19 +27,35 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#organizations">Organizations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#events">Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#participants">Participants</a>
-                        </li>
+                    <ul class="navbar-nav justify-content-between w-100">
+                        <div class="d-flex nav-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#organizations">Organizations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#events">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#participants">Participants</a>
+                            </li>
+                        </div>
+                        <div class="d-flex nav-items">
+                        <?php
+                            if($_SESSION['email']){
+                                ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin">Admin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/login.php?logout">Logout</a>
+                                </li>
+                                <?php
+                            }
+                        ?>
+                        </div>
                     </ul>
                 </div>
             </div>

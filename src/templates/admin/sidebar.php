@@ -9,10 +9,10 @@
     </div>
 </header>
 <div class="vertical-menu">
-    <div class="navbar-brand">
-        <i class="bi bi-flower2 fs-4"></i>
-        <span class="fs-4 ms-2">VARNAM</span>    
-    </div>
+    <a class="navbar-brand" href="#">
+        <span class="nav-icon"><img src="/assets/images/certificate.svg" alt=""></span>
+        <span class="fs-4 ms-2">APSCE</span>
+    </a>
     <ul class="menu-list">
         <li class="menu-title">MENU</li>
         <li class="menu-item <?= ($PAGE_TITLE == "dashboard - admin" ? "active" : "") ?>">

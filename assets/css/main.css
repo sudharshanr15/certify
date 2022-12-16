@@ -179,6 +179,14 @@
 .navbar {
   background-color: #222128 !important;
 }
+.navbar-nav .nav-items {
+  flex-direction: column;
+}
+@media screen and (min-width: 992px) {
+  .navbar-nav .nav-items {
+    flex-direction: row;
+  }
+}
 
 .navbar-brand .nav-icon {
   height: 50px;

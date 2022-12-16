@@ -1,6 +1,15 @@
 .navbar{
     background-color: #222128 !important;
 
+    &-nav{
+        & .nav-items{
+            flex-direction: column;
+
+            @media screen and (min-width: 992px){
+                flex-direction: row;
+            }
+        }
+    }
 }
 .navbar-brand{
     .nav-icon{
