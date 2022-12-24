@@ -43,3 +43,11 @@ create table certificate(
     user_id int not null,
     certificate varchar(256) not null
 );
+
+create table reset_password_tokens(
+    id int primary key not null auto_increment,
+    user_id int not null,
+    token varchar(256) not null,
+    created_at datetime default current_timestamp,
+    modified_at timestamp default current_timestamp
+);

@@ -70,6 +70,16 @@ if(isset($_SESSION['email'])){
                           <?php
                           unset($_SESSION['register_success']);
                         }
+
+                        if($_SESSION['reset_success'] ?? false){
+                          ?>
+                            <div class="alert alert-primary d-flex align-items-center" role="alert">
+                                <i class="bi bi-check-circle-fill fs-3 me-3"></i>
+                                User password reset successfull. Login to access your account.
+                            </div>
+                          <?php
+                          unset($_SESSION['reset_success']);
+                        }
                     ?>
 
                   <h3 class="fw-bold text-center pb-4">Login to your account</h3>
@@ -89,7 +99,7 @@ if(isset($_SESSION['email'])){
                   <div class="mb-5">
                     <button class="btn btn-primary btn-lg rounded-pill px-5" type="submit">Login</button>
                   </div>
-
+                  <p class="mb-2 pb-lg-2"><a href="/admin/forgot_password.php">Forgot Password</a></p>
                   <p class="mb-5 pb-lg-2">Don't have an account? <a href="/admin/signup.php">Register here</a></p>
                 </form>
 

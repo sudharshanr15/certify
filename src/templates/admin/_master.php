@@ -22,7 +22,7 @@ $SUB_MENU_TITLE = strtolower($_SESSION['sub_menu_title']);
 </head>
 <body class="admin-wrapper">
     <?php
-        if(strtolower($_SERVER["REQUEST_URI"]) != "/admin/login.php" && strtolower($_SERVER["REQUEST_URI"]) != "/admin/signup.php"){
+        if(strtolower($_SERVER["SCRIPT_NAME"]) != "/admin/login.php" && strtolower($_SERVER["SCRIPT_NAME"]) != "/admin/signup.php" && strtolower($_SERVER["SCRIPT_NAME"]) != "/admin/forgot_password.php" && strtolower($_SERVER["SCRIPT_NAME"]) != "/admin/reset_password.php"){
             include_once "sidebar.php";
             ?>
                 <div class="main">
