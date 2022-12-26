@@ -42,16 +42,27 @@
                                 <a class="nav-link" href="#participants">Participants</a>
                             </li>
                         </div>
-                        <div class="d-flex nav-items">
+                        <div class="dropdown nav-items">
                         <?php
                             if($_SESSION['email']){
                                 ?>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin">Admin</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin/login.php?logout">Logout</a>
-                                </li>
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?= $_SESSION['first_name'] . " " . $_SESSION['last_name'] ?>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item px-2">
+                                        <p class="nav-link m-0"><?= $_SESSION['email'] ?></p>
+                                    </li>
+                                    <li class="dropdown-item p-0 text-white">
+                                        <hr class="m-0">
+                                    </li>
+                                    <li class="dropdown-item px-2">
+                                        <a class="nav-link" href="/admin">Admin</a>
+                                    </li>
+                                    <li class="dropdown-item px-2">
+                                        <a class="nav-link" href="/admin/login.php?logout">Logout</a>
+                                    </li>
+                                </ul>
                                 <?php
                             }
                         ?>

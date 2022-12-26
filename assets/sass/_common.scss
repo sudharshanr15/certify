@@ -20,3 +20,16 @@
         }
     }
 }
+
+.dropdown{
+    & .dropdown-menu{
+        background-color: #222128 !important;
+        color: white !important;
+        left: unset;
+        right: 0;
+
+        & .dropdown-item:hover{
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
