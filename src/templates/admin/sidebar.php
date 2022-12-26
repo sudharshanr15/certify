@@ -23,7 +23,7 @@
             </a>
         </li>
         <li class="menu-item <?= ($PAGE_TITLE == "users - admin" ? "active" : "") ?>">
-            <a href="/admin/users.php">
+            <a href="/admin/users/">
                 <i class="bi bi-people icon-left"></i>
                 Users
                 <i class="bi bi-chevron-right pt-2 icon-right"></i>

@@ -19,6 +19,7 @@ $users = $users->getAll();
                             <th scope="col">Last Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Created At</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,7 @@ $users = $users->getAll();
                                 <td><?= $user['last_name'] ?></td>
                                 <td><?= $user['email'] ?></td>
                                 <td><?= $user['created_at'] ?></td>
+                                <td><a href="<?= "/admin/users/remove.php?id=" . $user['id'] ?>">Delete</a></td>
                             </tr>
                             <?php
                         }

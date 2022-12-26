@@ -7,6 +7,6 @@ if(!isset($_SESSION['email'])){
 
 $_SESSION['page_title'] = "Users - Admin";
 
-require_once "./../vendor/autoload.php";
+require_once "./../../vendor/autoload.php";
 
-echo (new \Certify\Certify\core\View)->renderAdmin("users.php");
+echo (new \Certify\Certify\core\View)->renderAdmin("users/remove.php");
