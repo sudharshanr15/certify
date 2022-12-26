@@ -18,6 +18,7 @@ $organizations = $organizations->getAll();
                             <th scope="col">id</th>
                             <th scope="col">Organization Name</th>
                             <th scope="col">Organization Logo</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,7 @@ $organizations = $organizations->getAll();
                                 <th scope="row"><?= $o['id'] ?></th>
                                 <td><?= $o['name'] ?></td>
                                 <td><img src="<?= $o['logo'] ?>" /></td>
+                                <td><a href="<?= "/admin/organization/remove.php?id=" . $o['id'] ?>">Delete</a></td>
                             </tr>
                             <?php
                         }
