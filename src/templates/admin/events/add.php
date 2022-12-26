@@ -20,7 +20,7 @@ if($name && $organization && $year){
         $file = $file_uploads->upload_image($image);
     }
 
-    $result = $competiton->create($name, $organization, $year, $file['image'] ?? "");
+    $result = $competiton->create($organization, $name, $file['image'] ?? "", $year);
     if($result['result'] == false){
         die($result['message']);
     }

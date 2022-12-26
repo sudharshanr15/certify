@@ -20,6 +20,7 @@ $competition = $competition->getAll();
                             <th scope="col">Organization ID</th>
                             <th scope="col">Image</th>
                             <th scope="col">Year</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +33,7 @@ $competition = $competition->getAll();
                                 <td><?= $c['organization'] ?></td>
                                 <td><img src="<?= $c['image'] ?>" /></td>
                                 <td><?= $c['year'] ?></td>
+                                <td><a href="<?= '/admin/events/remove.php?id=' . $c['id'] ?>">Delete</a></td>
                             </tr>
                             <?php
                         }
