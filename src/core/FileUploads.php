@@ -5,6 +5,7 @@ namespace Certify\Certify\core;
 class FileUploads{
     public $to_assets_dir = __DIR__ . "/../..";
     public $target_dir = __DIR__ . "/../../assets/uploads/";
+    public $participants_target = __DIR__ . "/../../assets/uploads/participants.csv";
 
     public function upload_image_multiple($files){
         $uploadOK = 1;
@@ -113,5 +114,11 @@ class FileUploads{
 
     public function remove_image($file_path){
         unlink($this->to_assets_dir . $file_path);
+    }
+
+    public function upload_participants_csv($file){
+        $upload = move_uploaded_file($file['tmp_name'], $this->participants_target);
+
+        return ($upload ? ['result' => true] : ['result' => false]);
     }
 }

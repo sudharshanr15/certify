@@ -1,30 +1,21 @@
 <?php
 
+use Certify\Certify\core\FileUploads;
+use Certify\Certify\core\ImportFile;
+
 $file = $_FILES['import_file'] ?? null;
 
 if($file['name']){
-    if(move_uploaded_file($file['tmp_name'], __DIR__ . "/../../../../exports/participants.csv")){
+    $file_uploads = new FileUploads;
+    $result = $file_uploads->upload_participants_csv($file);
+    if($result['result']){
         header("Location: /admin/participants");
     }else{
         die("Unable to upload file");
     }
 }
-
-// $file = fopen("exports/participants.csv", "r");
-// $i = 0;
-// $keys = [];
-// while(!feof($file)){
-//     $res = fgetcsv($file);
-//     if($i == 0){
-//         $i++;
-//         foreach($res as $k){
-//             $keys[] = $k;
-//         }
-//         continue;
-//     }
-//     print_r(array_combine($keys, $res));
-// }
-// fclose($file);
+$import = new ImportFile;
+$import->import_participants_csv();
 
 ?>
 
