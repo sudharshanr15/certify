@@ -26,7 +26,7 @@ class Participants extends Common{
 
             $stmt->execute();
 
-            return ["result" => true];
+            return ["result" => true, "id" => $this->db->lastInsertId()];
         }catch(PDOException $e){
             return ["result" => false, "message" => $e->getMessage()];
         }
