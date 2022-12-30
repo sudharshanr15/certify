@@ -59,12 +59,20 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item <?= ($PAGE_TITLE == "participants - admin" ? "active" : "") ?>">
-            <a href="/admin/participants/">
+        <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "participants - admin" ? "active" : "collapsed") ?>">
+            <a href="#">
                 <i class="bi bi-basket icon-left"></i>
                 Participants
                 <i class="bi bi-chevron-right pt-2 icon-right"></i>
             </a>
+            <ul class="sub-menu">
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "participants - view" ? "active" : "") ?>">
+                    <a href="/admin/participants/">View Participants</a>
+                </li>
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "participants - import" ? "active" : "") ?>">
+                    <a href="/admin/participants/import.php">Import Participants</a>
+                </li>
+            </ul>
         </li>
         <li class="menu-item <?= ($PAGE_TITLE == "certificates - admin" ? "active" : "") ?>">
             <a href="/admin/certificates/">

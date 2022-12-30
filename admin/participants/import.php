@@ -7,7 +7,7 @@ if(!isset($_SESSION['email'])){
 }
 
 $_SESSION['page_title'] = "Participants - Admin";
-$_SESSION['sub_menu_title'] = "participants - view";
+$_SESSION['sub_menu_title'] = "participants - import";
 
 require_once "../../vendor/autoload.php";
 echo (new \Certify\Certify\core\View)->renderAdmin("participants/import.php");
