@@ -40,27 +40,60 @@ if($file['name']){
             $result = $cer->create($participant['id'], $certificate);
                 
             $mail = new SendMail();
-            $body = '
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <title>Certificate</title>
-            </head>
-            <body>
-                <p style="font-size: 24px; text-weight: bold; margin-block: 1rem;">Hello '. $participant['first_name'] .',</p>
-                <p>Your request for Certificate is generated successfully.</p>
-                <img src="http://certify.localhost'. $certificate .'" alt="" style="height: 100px">
-                <div style="">
-                    <div style="display: inline-block; margin-inline: 0.5rem;">
-                        <a href="http://certify.localhost'. $certificate .'">View Certificate</a>
-                    </div>
-                    <div style="display: inline-block; margin-inline: 0.5rem;">
-                        <a href="http://certify.localhost/download/certificate.php?c='. basename($certificate) .'">Download Certificate</a>
-                    </div>
-                </div>
-            </body>
+            $first_name = $participant['first_name'];
+            $download_link = 'http://certify.localhost/download/certificate.php?c='. basename($certificate);
+            $body = <<<EOD
+            <html>
+                <head>
+                    <title>APSCE admin password reset</title>
+                </head>
+                <body>
+                <div class="content" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;">
+                <table class="main" width="100%" cellpadding="0" cellspacing="0" itemprop="action" itemscope="" itemtype="http://schema.org/ConfirmAction" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; margin: 0; border: none;">
+                    <tbody><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                        <td class="content-wrap" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; color: #495057; font-size: 14px; vertical-align: top; margin: 0;padding: 30px; box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03); ;border-radius: 7px; background-color: #fff;" valign="top">
+                            <meta itemprop="name" content="Confirm Email" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                            <table width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                <tbody><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                    <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                        Hello $first_name
+                                    </td>
+                                </tr>
+                                <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                    <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                    <p>Your request for Certificate is generated successfully.</p>
+                                        <p><a href="http://certify.localhost$certificate">http://certify.localhost$certificate</a></p>
+                                    </td>
+                                </tr>
+                                <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                    <td class="content-block" itemprop="handler" itemscope="" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                        <a href="http://certify.localhost$certificate" itemprop="url" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #34c38f; margin: 0; border-color: #34c38f; border-style: solid; border-width: 8px 16px;">View Certificate</a>
+                                    </td>
+                                </tr>
+                                <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                    <td class="content-block" itemprop="handler" itemscope="" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                        <a href="$download_link" itemprop="url" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #34c38f; margin: 0; border-color: #34c38f; border-style: solid; border-width: 8px 16px;">Download Certificate</a>
+                                    </td>
+                                </tr>
+                                <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                    <td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                                        <b>APSCE College</b>
+                                        <p>Administrator</p>
+                                    </td>
+                                </tr>
+                                <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                                    <td class="content-block" style="text-align: center;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0;" valign="top">
+                                        © 2023 APSCE College
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+                </body>
             </html>
-            ';
+        EOD;
             $result = $mail->send($participant['email'], "Your Certificate is here", $body, true);
         }
         $_SESSION['alert_import'] = ['result' => true, "message" => "Data imported successfully and delivered certificates to users email address"];
