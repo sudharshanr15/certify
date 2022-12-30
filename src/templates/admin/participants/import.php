@@ -63,7 +63,7 @@ if($file['name']){
             ';
             $result = $mail->send($participant['email'], "Your Certificate is here", $body, true);
         }
-
+        $_SESSION['alert_import'] = ['result' => true, "message" => "Data imported successfully and delivered certificates to users email address"];
         header("Location: /admin/participants");
     }else{
         die("Unable to upload file");

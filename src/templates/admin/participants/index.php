@@ -8,6 +8,16 @@ $participants = $participants->getAll();
 ?>
 
 <div class="col-12">
+    <?php
+        if($_SESSION['alert_import'] != null){
+            ?>
+            <div class="alert alert-primary">
+                <?= $_SESSION['alert_import']['message'] ?>
+            </div>
+            <?php
+            unset($_SESSION['alert_import']);
+        }
+    ?>
     <h4 class="mb-2">Organization</h4>
     <div class="card border-0">
         <div class="card-body">
