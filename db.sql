@@ -29,6 +29,7 @@ create table participants(
     first_name varchar(50) not null,
     last_name varchar(50) not null,
     email varchar(256) not null,
+    usn varchar(100) not null,
     degree varchar(15) not null,
     organization varchar(256) not null,
     competition varchar(256) not null,
