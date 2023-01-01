@@ -1,10 +1,12 @@
 <?php
 
+use Certify\Certify\models\Certificate;
 use Certify\Certify\models\Participants;
 
 $participants = new Participants;
 $participants = $participants->getAll();
 
+$certificate = new Certificate();
 ?>
 
 <div class="col-12">
@@ -34,6 +36,7 @@ $participants = $participants->getAll();
                             <th scope="col">Event ID</th>
                             <th scope="col">Is Winner?</th>
                             <th scope="col">Place Secured</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +53,16 @@ $participants = $participants->getAll();
                                 <td><?= $p['competition'] ?></td>
                                 <td><?= $p['winner'] ? "True" : "False" ?></td>
                                 <td><?= $p['place'] == 0 ? "False" : $p['place'] ?></td>
+                                <td>
+                                <?php
+                                    $already_generated = $certificate->getFromUserID($p['id']);
+                                    if(count($already_generated) <= 0){
+                                        ?>
+                                        <a href="<?= '/admin/participants/remove.php?id=' . $p['id']  ?>" class="btn btn-danger me-2">Delete</a><a href="<?= '/admin/participants/generate.php?id=' . $p['id']  ?>" class="btn btn-success">Generate</a>
+                                        <?php
+                                    }
+                                ?>
+                                </td>
                             </tr>
                             <?php
                         }
