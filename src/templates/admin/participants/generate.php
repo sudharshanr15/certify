@@ -19,14 +19,14 @@ if(!empty($_POST)){
     if($is_winner == 1){
         $place = ($_POST['place'] == 1 || $_POST['place'] == 2 || $_POST['place'] == 3) ? $_POST['place'] : null;
     }else{
-        $place = false;
+        $place = 0;
     }
 
     if($is_winner === null || $place === null){
         die("Invalid values");
     }
 
-    $update_result = $participants->update($participant['first_name'], $participant['last_name'], $participant['email'], $participant['degree'], $participant['organization'], $participant['competition'], $is_winner, $place);
+    $update_result = $participants->update($participant['first_name'], $participant['last_name'], $participant['email'], $participant['usn'], $participant['degree'], $participant['organization'], $participant['competition'], $is_winner, $place);
     if($update_result['result'] == false){
         die("Unable to generate certificate");
     }

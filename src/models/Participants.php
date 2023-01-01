@@ -11,13 +11,14 @@ class Participants extends Common{
         $this->table = "participants";
     }
 
-    public function create($first_name, $last_name, $email, $degree, $organization, $competition, $winner, $place=0){
+    public function create($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $winner, $place=0){
         try{
-            $query = "INSERT INTO $this->table (first_name, last_name, email, degree, organization, competition, winner, place) VALUES (:first_name, :last_name, :email, :degree, :organization, :competition, :winner, :place)";
+            $query = "INSERT INTO $this->table (first_name, last_name, email, usn, degree, organization, competition, winner, place) VALUES (:first_name, :last_name, :email, :usn, :degree, :organization, :competition, :winner, :place)";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(":first_name", $first_name);
             $stmt->bindParam(":last_name", $last_name);
             $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":usn", $usn);
             $stmt->bindParam(":degree", $degree);
             $stmt->bindParam(":organization", $organization);
             $stmt->bindParam(":competition", $competition);
@@ -32,13 +33,14 @@ class Participants extends Common{
         }
     }
 
-    public function update($first_name, $last_name, $email, $degree, $organization, $competition, $winner, $place=0){
+    public function update($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $winner, $place=0){
         try{
-            $query = "UPDATE $this->table SET first_name=:first_name, last_name=:last_name, degree=:degree, organization=:organization, competition=:competition, winner=:winner, place=:place WHERE email=:email";
+            $query = "UPDATE $this->table SET first_name=:first_name, last_name=:last_name, degree=:degree, usn=:usn, organization=:organization, competition=:competition, winner=:winner, place=:place WHERE email=:email";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(":first_name", $first_name);
             $stmt->bindParam(":last_name", $last_name);
             $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":usn", $usn);
             $stmt->bindParam(":degree", $degree);
             $stmt->bindParam(":organization", $organization);
             $stmt->bindParam(":competition", $competition);
