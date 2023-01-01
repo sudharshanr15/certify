@@ -9,16 +9,16 @@ use Certify\Certify\models\Certificate;
 
 $organizations = new Organization;
 $events = new Competition;
-$participants = new Participants;
+$participants_obj = new Participants;
 
 $organizations = $organizations->getAll();
 $events = $events->getAll();
-$participants = $participants->getAll();
+$participants = $participants_obj->getAll();
 
 ?>
 <div class="main container">
     <?php
-        $result = $_SESSION['res_message'];
+        $result = $_SESSION['res_message'] ?? null;
         if($result){
             ?>
             <div class="<?= "alert alert-dismissible fade show mt-2 " . ($result['result'] == true ? 'alert-primary' : "alert-danger") ?>">
@@ -143,5 +143,55 @@ $participants = $participants->getAll();
                 </div>
             </div>
         </div>
+        <?php
+        foreach($events as $e){
+            ?>
+            <div class="pt-5">
+                <h3><?= "Participants - " . $e['competition'] ?></h3>
+                <div class="card border border-0 shadow">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="event-participants-datatable display data-table responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">USN</th>
+                                        <th scope="col">Degree</th>
+                                        <th scope="col">Event ID</th>
+                                        <th scope="col">Is Winner?</th>
+                                        <th scope="col">Place Secured</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $event_participants = $participants_obj->getFromEventName($e['competition']);
+                                    foreach($event_participants as $p){
+                                        ?>
+                                        <tr>
+                                            <th scope="row"><?= $p['id'] ?></th>
+                                            <td><?= $p['first_name'] ?></td>
+                                            <td><?= $p['last_name'] ?></td>
+                                            <td><?= $p['email'] ?></td>
+                                            <td><?= $p['usn'] ?></td>
+                                            <td><?= $p['degree'] ?></td>
+                                            <td><?= $p['competition'] ?></td>
+                                            <td><?= $p['winner'] ? "True" : "False" ?></td>
+                                            <td><?= $p['place'] == 0 ? "False" : $p['place'] ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
     </section>
 </div>

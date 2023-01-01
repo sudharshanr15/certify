@@ -34,4 +34,11 @@ $(document).ready(function(){
             responsive: true
         });
     }
+
+    let event_participants_datatable = $(".event-participants-datatable")
+    if(event_participants_datatable.length > 0){
+        event_participants_datatable.DataTable({
+            responsive: true
+        })
+    }
 })
