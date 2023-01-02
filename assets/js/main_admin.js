@@ -19,9 +19,11 @@ $(document).ready(function(){
     // close sidebar when clicked outside them after open
     $(document).click(function(e){
         if(!e.target.closest("#sidebar-btn")){ // due to menu btn and document both event trigerred causing no effects
-            if($(".vertical-menu")[0].classList.contains("expanded")){
-                if(e.target.closest('.vertical-menu') === null){
-                    $(".vertical-menu")[0].classList.toggle("expanded")
+            if($(".vertical-menu").length > 0){
+                if($(".vertical-menu")[0].classList.contains("expanded")){
+                    if(e.target.closest('.vertical-menu') === null){
+                        $(".vertical-menu")[0].classList.toggle("expanded")
+                    }
                 }
             }
         }
@@ -35,5 +37,23 @@ $(document).ready(function(){
         dataTable.DataTable({
             responsive: true
         });
+    }
+
+    let toggle_password = $(".toggle-password")
+    if(toggle_password.length > 0){
+        toggle_password.on("click", function(e){
+            e.preventDefault()
+            let current_target = $(e.currentTarget)
+            current_target.toggleClass("show")
+
+            if(current_target.hasClass("show")){
+                current_target.html('<i class="bi bi-eye-slash-fill fs-5"></i>')
+                current_target.siblings("input").attr("type", "text")
+            }else{
+                current_target.html('<i class="bi bi-eye-fill fs-5"></i>')
+                current_target.siblings("input").attr("type", "password")
+
+            }
+        })
     }
 })

@@ -92,8 +92,11 @@ if(isset($_SESSION['email'])){
 
                         <div class="form-outline mt-3">
                             <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control form-control-lg rounded-pill" required />
-                        </div>
+                            <div class="input-group position-relative">
+                              <input type="password" id="password" name="password" class="form-control form-control-lg rounded-pill" required />
+                              <button class="btn toggle-password input-group-text position-absolute end-0 h-100 me-2"><i class="bi bi-eye-fill fs-5"></i></button>
+                            </div>
+                          </div>
                     </div>
 
                   <div class="mb-5">

@@ -96,12 +96,18 @@ if($first_name != null && $last_name != null && $email != null && $password !== 
 
                         <div class="form-outline mt-3">
                             <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control form-control-lg rounded-pill" value="<?= $password ?? null ?>" required />
+                            <div class="input-group position-relative">
+                              <input type="password" id="password" name="password" class="form-control form-control-lg rounded-pill" value="<?= $password ?? null ?>" required />
+                              <button class="btn toggle-password input-group-text position-absolute end-0 h-100 me-2"><i class="bi bi-eye-fill fs-5"></i></button>
+                            </div>
                         </div>
 
                         <div class="form-outline mt-3">
                             <label class="form-label" for="cpassword">Confirm Password</label>
-                            <input type="password" id="cpassword" name="cpassword" class="form-control form-control-lg rounded-pill" value="<?= $cpassword ?? null ?>" required />
+                            <div class="input-group position-relative">
+                              <input type="password" id="cpassword" name="cpassword" class="form-control form-control-lg rounded-pill" value="<?= $cpassword ?? null ?>" required />
+                              <button class="btn toggle-password input-group-text position-absolute end-0 h-100 me-2"><i class="bi bi-eye-fill fs-5"></i></button>
+                            </div>
                         </div>
                     </div>
 

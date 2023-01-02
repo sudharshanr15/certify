@@ -4,4 +4,9 @@
     width: 100vw;
     max-height: 100vh;
     max-width: 100vw;
+
+    & .toggle-password{
+        border: 0;
+        z-index: 1000;
+    }
 }
