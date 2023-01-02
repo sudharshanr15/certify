@@ -15,13 +15,6 @@
     </a>
     <ul class="menu-list">
         <li class="menu-title">MENU</li>
-        <li class="menu-item <?= ($PAGE_TITLE == "dashboard - admin" ? "active" : "") ?>">
-            <a href="/admin">
-                <i class="bi bi-house-heart icon-left"></i>
-                Dashboard
-                <i class="bi bi-chevron-right pt-2 icon-right"></i>
-            </a>
-        </li>
         <li class="menu-item <?= ($PAGE_TITLE == "users - admin" ? "active" : "") ?>">
             <a href="/admin/users/">
                 <i class="bi bi-people icon-left"></i>
