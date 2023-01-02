@@ -76,7 +76,7 @@
         </li>
         <li class="menu-item <?= ($PAGE_TITLE == "certificates - admin" ? "active" : "") ?>">
             <a href="/admin/certificates/">
-                <i class="bi bi-basket icon-left"></i>
+                <i class="bi bi-award icon-left"></i>
                 Certificates
                 <i class="bi bi-chevron-right pt-2 icon-right"></i>
             </a>
