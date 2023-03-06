@@ -34,7 +34,7 @@ class Participants extends Common{
         }
     }
 
-    public function update($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $winner, $place=0){
+    public function update($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $winner=0, $place=0){
         try{
             $query = "UPDATE $this->table SET first_name=:first_name, last_name=:last_name, degree=:degree, usn=:usn, organization=:organization, competition=:competition, winner=:winner, place=:place WHERE email=:email";
             $stmt = $this->db->prepare($query);

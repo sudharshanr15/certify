@@ -60,7 +60,9 @@ $certificate = new Certificate();
                                     $already_generated = $certificate->getFromUserID($p['id']);
                                     if(count($already_generated) <= 0){
                                         ?>
-                                        <a href="<?= '/admin/participants/remove.php?id=' . $p['id']  ?>" class="btn btn-danger me-2">Delete</a><a href="<?= '/admin/participants/generate.php?id=' . $p['id']  ?>" class="btn btn-success">Generate</a>
+                                        <a href="<?= '/admin/participants/remove.php?id=' . $p['id']  ?>" class="btn btn-danger me-2">Delete</a>
+                                        <a href="<?= '/admin/participants/generate.php?id=' . $p['id']  ?>" class="btn btn-success">Generate</a>
+                                        <a href="<?= '/admin/participants/edit.php?id=' . $p['id']  ?>" class="btn btn-success">Edit</a>
                                         <?php
                                     }
                                 ?>
