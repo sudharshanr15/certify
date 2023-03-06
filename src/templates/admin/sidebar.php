@@ -67,12 +67,20 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item <?= ($PAGE_TITLE == "certificates - admin" ? "active" : "") ?>">
+        <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "certificates - admin" ? "active" : "") ?>">
             <a href="/admin/certificates/">
                 <i class="bi bi-award icon-left"></i>
                 Certificates
                 <i class="bi bi-chevron-right pt-2 icon-right"></i>
             </a>
+            <ul class="sub-menu">
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "certificates - view" ? "active" : "") ?>">
+                    <a href="/admin/certificates/">User Certificates</a>
+                </li>
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "certificates - template" ? "active" : "") ?>">
+                    <a href="/admin/certificates/template.php">Templates</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>
