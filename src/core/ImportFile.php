@@ -29,7 +29,7 @@ class ImportFile{
             }
             $is_winner = 0;
             $place_secured = 0;
-            $result = $participants->create($data['first name'], $data['last name'], $data['student email'], $data['student usn'], $data['degree'], $data['organization'], $data['event'], $is_winner, $place_secured);
+            $result = $participants->create($data['first name'], $data['last name'], $data['student email'], $data['student usn'], $data['degree'], $data['organization'], $data['event'], $is_winner, $data['competition'], $place_secured);
             if($result['result'] == false){
                 fclose($file);
                 die("Unable to import data");

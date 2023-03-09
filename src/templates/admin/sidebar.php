@@ -24,7 +24,7 @@
         </li>
         <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "organization - admin" ? "active" : "collapsed") ?>">
             <a href="#">
-                <i class="bi bi-boxes icon-left"></i>
+                <i class="bi bi-building icon-left"></i>
                     Organization
                 <i class="bi bi-chevron-right pt-2 icon-right"></i>
             </a>
@@ -52,9 +52,24 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "sub events - admin" ? "active" : "collapsed") ?>">
+            <a href="/admin/sub_events/">
+                <i class="bi bi-boxes icon-left"></i>
+                Sub Events
+                <i class="bi bi-chevron-right pt-2 icon-right"></i>
+            </a>
+            <ul class="sub-menu">
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "sub events - view" ? "active" : "") ?>">
+                    <a href="/admin/sub_events/">View Sub event</a>
+                </li>
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "sub events - add" ? "active" : "") ?>">
+                    <a href="/admin/sub_events/add.php">Add Sub event</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "participants - admin" ? "active" : "collapsed") ?>">
             <a href="#">
-                <i class="bi bi-basket icon-left"></i>
+                <i class="bi bi-person-badge-fill icon-left"></i>
                 Participants
                 <i class="bi bi-chevron-right pt-2 icon-right"></i>
             </a>
@@ -67,7 +82,7 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "certificates - admin" ? "active" : "") ?>">
+        <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "certificates - admin" ? "active" : "collapsed") ?>">
             <a href="/admin/certificates/">
                 <i class="bi bi-award icon-left"></i>
                 Certificates

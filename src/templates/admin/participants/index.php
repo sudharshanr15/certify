@@ -33,8 +33,9 @@ $certificate = new Certificate();
                             <th scope="col">Email</th>
                             <th scope="col">USN</th>
                             <th scope="col">Degree</th>
-                            <th scope="col">Organization ID</th>
-                            <th scope="col">Event ID</th>
+                            <th scope="col">Organization</th>
+                            <th scope="col">Event</th>
+                            <th scope="col">Competition</th>
                             <th scope="col">Is Winner?</th>
                             <th scope="col">Place Secured</th>
                             <th scope="col">Actions</th>
@@ -53,6 +54,7 @@ $certificate = new Certificate();
                                 <td><?= $p['degree'] ?></td>
                                 <td><?= $p['organization'] ?></td>
                                 <td><?= $p['competition'] ?></td>
+                                <td><?= $p['sub_event'] ?></td>
                                 <td><?= $p['winner'] ? "True" : "False" ?></td>
                                 <td><?= $p['place'] == 0 ? "False" : $p['place'] ?></td>
                                 <td>

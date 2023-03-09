@@ -5,7 +5,7 @@ use Certify\Certify\models\Organization;
 $id = $_GET['id'] ?? null;
 
 if(!$id){
-    die("Invalid arguements");
+    die("Invalid arguments");
 }
 $org = new Organization;
 $result = $org->remove($id);

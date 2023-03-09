@@ -12,9 +12,9 @@ class Participants extends Common{
         $this->table = "participants";
     }
 
-    public function create($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $winner, $place=0){
+    public function create($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $winner, $sub_event, $place=0){
         try{
-            $query = "INSERT INTO $this->table (first_name, last_name, email, usn, degree, organization, competition, winner, place) VALUES (:first_name, :last_name, :email, :usn, :degree, :organization, :competition, :winner, :place)";
+            $query = "INSERT INTO $this->table (first_name, last_name, email, usn, degree, organization, competition, sub_event, winner, place) VALUES (:first_name, :last_name, :email, :usn, :degree, :organization, :competition, :sub_event, :winner, :place)";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(":first_name", $first_name);
             $stmt->bindParam(":last_name", $last_name);
@@ -23,6 +23,7 @@ class Participants extends Common{
             $stmt->bindParam(":degree", $degree);
             $stmt->bindParam(":organization", $organization);
             $stmt->bindParam(":competition", $competition);
+            $stmt->bindParam(":sub_event", $sub_event);
             $stmt->bindParam(":winner", $winner);
             $stmt->bindParam(":place", $place);
 

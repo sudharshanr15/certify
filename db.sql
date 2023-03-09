@@ -52,3 +52,10 @@ create table reset_password_tokens(
     created_at datetime default current_timestamp,
     modified_at timestamp default current_timestamp
 );
+
+create table sub_events(
+    id int primary key not null auto_increment,
+    name varchar(256) not null,
+    competition int not null,
+    logo varchar(256) not null
+);
