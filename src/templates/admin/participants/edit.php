@@ -3,6 +3,7 @@
 use Certify\Certify\models\Participants;
 use Certify\Certify\models\Organization;
 use Certify\Certify\models\Competition;
+use Certify\Certify\models\Subevents;
 
 $id = $_GET['id'] ?? null;
 
@@ -19,6 +20,9 @@ $organizations_details = $organization->getAll();
 $competition = new Competition();
 $competition_details = $competition->getAll();
 
+$subevents = new Subevents();
+$subevents_details = $subevents->getAll();
+
 if(strtolower($_SERVER['REQUEST_METHOD']) == "post"){
     $first_name = $_POST['first_name'] ?? null;
     $last_name = $_POST['last_name'] ?? null;
@@ -27,9 +31,10 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == "post"){
     $degree = $_POST['degree'] ?? null;
     $organization = $_POST['organization'] ?? null;
     $competition = $_POST['competition'] ?? null;
+    $sub_event = $_POST['sub_event'] ?? null;
 
-    if($first_name && $last_name && $email && $usn && $degree && $organization && $competition){
-        $result = $participants->update($first_name, $last_name, $email, $usn, $degree, $organization, $competition);
+    if($first_name && $last_name && $email && $usn && $degree && $organization && $competition && $sub_event){
+        $result = $participants->update($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $sub_event);
         if($result['result'] == true){
             $_SESSION['alert_edit']['message'] = "Participant details changed!";
             header("Location: /admin/participants/edit.php?id=" . $id);
@@ -100,6 +105,18 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == "post"){
                             foreach($competition_details as $c){
                                 ?>
                                 <option value="<?= $c['competition'] ?>" <?= strtolower($c['competition']) == strtolower($participant_detail['competition']) ? "selected" : "" ?>><?= $c['competition'] ?></option>
+                                <?php
+                            }
+                        ?>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="sub_event" class="col-sm-2 form-label">Sub Event</label>
+                    <select class="form-select" name="sub_event" id="sub_event">
+                        <?php
+                            foreach($subevents_details as $event){
+                                ?>
+                                <option value="<?= $event['name'] ?>" <?= strtolower($event['name']) == strtolower($participant_detail['sub_event']) ? "selected" : "" ?>><?= $event['name'] ?></option>
                                 <?php
                             }
                         ?>

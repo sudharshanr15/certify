@@ -26,7 +26,8 @@ if(!empty($_POST)){
         die("Invalid values");
     }
 
-    $update_result = $participants->update($participant['first_name'], $participant['last_name'], $participant['email'], $participant['usn'], $participant['degree'], $participant['organization'], $participant['competition'], $is_winner, $place);
+    
+    $update_result = $participants->update($participant['first_name'], $participant['last_name'], $participant['email'], $participant['usn'], $participant['degree'], $participant['organization'], $participant['competition'], $participant['sub_event'], $is_winner, $place);
     if($update_result['result'] == false){
         die("Unable to generate certificate");
     }

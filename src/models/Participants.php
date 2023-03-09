@@ -35,9 +35,9 @@ class Participants extends Common{
         }
     }
 
-    public function update($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $winner=0, $place=0){
+    public function update($first_name, $last_name, $email, $usn, $degree, $organization, $competition, $sub_event, $winner=0, $place=0){
         try{
-            $query = "UPDATE $this->table SET first_name=:first_name, last_name=:last_name, degree=:degree, usn=:usn, organization=:organization, competition=:competition, winner=:winner, place=:place WHERE email=:email";
+            $query = "UPDATE $this->table SET first_name=:first_name, last_name=:last_name, degree=:degree, usn=:usn, organization=:organization, competition=:competition, sub_event=:sub_event, winner=:winner, place=:place WHERE email=:email";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(":first_name", $first_name);
             $stmt->bindParam(":last_name", $last_name);
@@ -46,6 +46,7 @@ class Participants extends Common{
             $stmt->bindParam(":degree", $degree);
             $stmt->bindParam(":organization", $organization);
             $stmt->bindParam(":competition", $competition);
+            $stmt->bindParam(":sub_event", $sub_event);
             $stmt->bindParam(":winner", $winner);
             $stmt->bindParam(":place", $place);
 
