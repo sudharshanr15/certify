@@ -32,26 +32,50 @@ class Generate{
     // }
 
     public function generate_participant_certificate($name, $dept, $competition, $year){
-        $file_name = md5(round(microtime(true))) . ".jpeg";
-        $image_path = $this->upload_path . $file_name;
-        $image = imagecreatefromjpeg($this->participant_certificate);
-        $color = imagecolorallocate($image, 23, 15, 13);
-        imagettftext($image, 30, 0, 670, 520, $color, $this->font, $name);
-        imagettftext($image, 30, 0, 250, 590, $color, $this->font, $dept);
-        imagettftext($image, 30, 0, 180, 655, $color, $this->font, $competition);
-        imagettftext($image, 30, 0, 350, 720, $color, $this->font, $year);
-        imagejpeg($image, $image_path);
-        imagedestroy($image);
+        $link = "http://localhost:5000/api/generate/participant?name=" . urlencode($name) . "&degree=". urlencode($dept) ."&competition=". urlencode($competition) ."&year=". urlencode($year);
+        $curl = curl_init();
 
-        return ["image" => "/assets/certificates/" . $file_name];
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $link,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_decode($response, true);
+        curl_close($curl);
+
+        if($response['result'] == true){
+            return ["image" => $response['output_file']];
+        }
     }
 
     public function generate_winner_certificate($name, $dept, $place, $competition, $year){
-        $command = sprintf("%s %s winner --name='%s' --degree='%s' --place='%s' --competition='%s' --year='%s'", PYTHON_SHELL_NAME, CERTIFICATE_PY_FILE, $name, $dept, $place, $competition, $year);
-        $output = system($command, $return_val);
-        echo "<pre>";
-        var_dump($return_val, $command);
-        echo "</pre>";
-        exit;
+        $link = "http://localhost:5000/api/generate/winner?name=" . urlencode($name) . "&degree=". urlencode($dept) ."&competition=". urlencode($competition) ."&year=". urlencode($year) ."&place=" . urlencode($place);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $link,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_decode($response, true);
+        curl_close($curl);
+
+        if($response['result'] == true){
+            return ["image" => $response['output_file']];
+        }
     }
 }
