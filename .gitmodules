@@ -1,0 +1,3 @@
+[submodule "html_to_pdf"]
+	path = html_to_pdf
+	url = git@github.com:sudharshanr15/certify-python.git
