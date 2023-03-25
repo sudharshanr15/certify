@@ -37,7 +37,7 @@ $certificate = $certificate->getAll();
                                 <td><?= $user['first_name'] ?></td>
                                 <td><?= $user['last_name'] ?></td>
                                 <td><?= $user['email'] ?></td>
-                                <td><img src="<?= $c['certificate'] ?>" /></td>
+                                <td><a href="<?= $c['certificate']?>">View Certificate</a></td>
                             </tr>
                             <?php
                         }
