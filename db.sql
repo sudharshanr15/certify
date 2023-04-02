@@ -33,6 +33,7 @@ create table participants(
     degree varchar(15) not null,
     organization varchar(256) not null,
     competition varchar(256) not null,
+    sub_event varchar(256) not null,
     winner int not null default 0,
     place int,
     created_at datetime default current_timestamp,
