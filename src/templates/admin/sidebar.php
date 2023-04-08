@@ -97,5 +97,20 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item has-sub-menu <?= ($PAGE_TITLE == "signatures - admin" ? "active" : "collapsed") ?>">
+            <a href="/admin/signatures/">
+                <i class="bi bi-award icon-left"></i>
+                Signatures
+                <i class="bi bi-chevron-right pt-2 icon-right"></i>
+            </a>
+            <ul class="sub-menu">
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "signatures - view" ? "active" : "") ?>">
+                    <a href="/admin/signatures/">View Signatures</a>
+                </li>
+                <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "signatures - add" ? "active" : "") ?>">
+                    <a href="/admin/signatures/add.php">Add Signature</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
