@@ -2,3 +2,6 @@ vendor
 assets/certificates/*
 assets/uploads/*
 assets/signatures/*
+!assets/signatures/.gitkeep
+!assets/uploads/.gitkeep
+!assets/certificates/.gitkeep
