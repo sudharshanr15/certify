@@ -1,2 +1,4 @@
 vendor
 assets/certificates/*
+assets/uploads/*
+assets/signatures/*
