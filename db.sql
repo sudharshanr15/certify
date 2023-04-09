@@ -63,7 +63,7 @@ create table sub_events(
 
 create table signature(
     id int primary key not null auto_increment,
-    name varchar(256) not null,
+    name varchar(256) not null unique,
     image varchar(256) not null,
     created_at datetime default current_timestamp,
     modified_at timestamp default current_timestamp

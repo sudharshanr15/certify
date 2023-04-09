@@ -108,7 +108,7 @@
                     <a href="/admin/signatures/">View Signatures</a>
                 </li>
                 <li class="sub-menu-item <?= ($SUB_MENU_TITLE == "signatures - add" ? "active" : "") ?>">
-                    <a href="/admin/signatures/add.php">Add Signature</a>
+                    <a href="/admin/signatures/add.php">Update Signature</a>
                 </li>
             </ul>
         </li>
