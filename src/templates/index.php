@@ -1,11 +1,8 @@
 <?php
 
-use Certify\Certify\core\certificates\Generate;
 use Certify\Certify\models\Competition;
 use Certify\Certify\models\Organization;
 use Certify\Certify\models\Participants;
-use Certify\Certify\core\SendMail;
-use Certify\Certify\models\Certificate;
 
 $organizations = new Organization;
 $events = new Competition;

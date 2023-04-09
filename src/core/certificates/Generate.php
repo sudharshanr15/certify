@@ -5,10 +5,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config.php";
 
 class Generate{
     private $root_dir;
-    private $font = __DIR__ ."/lucida calligraphy italic.ttf";
-    private $winner_certificate = __DIR__ . "/template_winner.jpeg";
-    private $participant_certificate = __DIR__ . "/template_participant.jpeg";
-    private $upload_path = __DIR__ . "/../../../assets/certificates/";
 
     function __construct()
     {
