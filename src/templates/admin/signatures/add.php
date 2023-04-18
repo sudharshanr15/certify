@@ -20,7 +20,8 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == "post"){
         $data = $signature->getByName($name);
         
         $file_uploads = new FileUploads();
-        $file_upload = $file_uploads->upload_image($image);
+        $image_extension = strtolower(pathinfo($image['name'],PATHINFO_EXTENSION));
+        $file_upload = $file_uploads->upload_signature($image, $name . "." . $image_extension);
         
         if($file_upload['result'] === true){
             if($data && count($data) > 0){

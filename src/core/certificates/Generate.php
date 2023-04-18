@@ -27,8 +27,9 @@ class Generate{
     //     return ["image" => "/assets/certificates/" . $file_name];
     // }
 
-    public function generate_participant_certificate($name, $dept, $competition, $year){
-        $link = "http://localhost:5000/api/generate/participant?name=" . urlencode($name) . "&degree=". urlencode($dept) ."&competition=". urlencode($competition) ."&year=". urlencode($year);
+    public function generate_participant_certificate($name, $dept, $competition, $p_sign, $h_sign, $c_sign, $year){
+        $params = sprintf("name=%s&degree=%s&competition=%s&year=%s&p_sign=%s&h_sign=%s&c_sign=%s", urlencode($name), urlencode($dept), urlencode($competition), urlencode($year), $p_sign, $h_sign, $c_sign);
+        $link = "http://localhost:5000/api/generate/participant?" . $params;
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -51,8 +52,9 @@ class Generate{
         }
     }
 
-    public function generate_winner_certificate($name, $dept, $place, $competition, $year){
-        $link = "http://localhost:5000/api/generate/winner?name=" . urlencode($name) . "&degree=". urlencode($dept) ."&competition=". urlencode($competition) ."&year=". urlencode($year) ."&place=" . urlencode($place);
+    public function generate_winner_certificate($name, $dept, $place, $competition, $p_sign, $h_sign, $c_sign, $year){
+        $params = sprintf("name=%s&degree=%s&competition=%s&year=%s&place=%s&p_sign=%s&h_sign=%s&c_sign=%s", urlencode($name), urlencode($dept), urlencode($competition), urlencode($year), urlencode($place), $p_sign, $h_sign, $c_sign);
+        $link = "http://localhost:5000/api/generate/winner?" . $params;
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

@@ -6,6 +6,7 @@ class FileUploads{
     public $to_assets_dir = __DIR__ . "/../..";
     public $target_dir = __DIR__ . "/../../assets/uploads/";
     public $participants_target = __DIR__ . "/../../assets/uploads/participants.csv";
+    public $signatures_dir = __DIR__ . "/../../assets/signatures/";
 
     public function upload_image_multiple($files){
         $uploadOK = 1;
@@ -120,5 +121,44 @@ class FileUploads{
         $upload = move_uploaded_file($file['tmp_name'], $this->participants_target);
 
         return ($upload ? ['result' => true] : ['result' => false]);
+    }
+
+    public function upload_signature($file, $file_name){
+        $uploadOK = 1;
+        $target_file = $this->signatures_dir . $file_name;
+
+        $resulting_msg = "";
+        $image_file_type = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        $check_image = getimagesize($file['tmp_name']);
+
+        if(!$check_image){
+            $resulting_msg .= "File is not an image.";
+            $uploadOK = 0;
+        }
+
+        if($image_file_type != "jpg" && $image_file_type != "png" && $image_file_type != "jpeg"){
+            $resulting_msg .= "File format not allowed";
+            $uploadOK = 0;
+        }
+
+        if($uploadOK == 0){
+            return ["result" => false, "message" => $resulting_msg];
+        }
+
+        $uploadOK = 1;
+        $resulting_msg = "";
+        $image = "";
+        if (move_uploaded_file($file['tmp_name'], $target_file)) {
+            $image = strstr($this->signatures_dir, "/assets") . $file_name;
+        } else {
+            $uploadOK = 0;
+        }
+
+        if($uploadOK == 0){
+            return ["result" => false, "message" => "Unable to upload file, Please try again"];
+        }
+
+        return ["result" => true, "image" => $image];
     }
 }
