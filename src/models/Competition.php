@@ -3,7 +3,7 @@
 namespace Certify\Certify\models;
 
 use PDOException;
-
+use PDO;
 class Competition extends Common{
     public function __construct()
     {
@@ -26,5 +26,14 @@ class Competition extends Common{
         }catch(PDOException $e){
             return ["result" => false, "message" => $e->getMessage()];
         }
+    }
+
+    public function getFromCompetition($name){
+        $query = "SELECT * FROM $this->table WHERE competition=:competition";
+        $result = $this->db->prepare($query);
+        $result->bindParam(":competition", $name);
+        $result->execute();
+        $rows = $result->fetch(PDO::FETCH_ASSOC);
+        return $rows;
     }
 }

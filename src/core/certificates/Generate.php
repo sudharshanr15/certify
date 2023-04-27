@@ -27,8 +27,8 @@ class Generate{
     //     return ["image" => "/assets/certificates/" . $file_name];
     // }
 
-    public function generate_participant_certificate($name, $dept, $competition, $p_sign, $h_sign, $c_sign, $year){
-        $params = sprintf("name=%s&degree=%s&competition=%s&year=%s&p_sign=%s&h_sign=%s&c_sign=%s", urlencode($name), urlencode($dept), urlencode($competition), urlencode($year), $p_sign, $h_sign, $c_sign);
+    public function generate_participant_certificate($name, $dept, $competition, $competition_logo, $p_sign, $h_sign, $c_sign, $year){
+        $params = sprintf("name=%s&degree=%s&competition=%s&year=%s&p_sign=%s&h_sign=%s&c_sign=%s&competition_logo=%s", urlencode($name), urlencode($dept), urlencode($competition), urlencode($year), $p_sign, $h_sign, $c_sign, rawurlencode($competition_logo));
         $link = "http://localhost:5000/api/generate/participant?" . $params;
         $curl = curl_init();
 
@@ -40,10 +40,13 @@ class Generate{
         CURLOPT_TIMEOUT => 0,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_CUSTOMREQUEST => 'GET'
         ));
 
         $response = curl_exec($curl);
+        if($response === FALSE){
+            return false;
+        }
         $response = json_decode($response, true);
         curl_close($curl);
 
@@ -52,8 +55,8 @@ class Generate{
         }
     }
 
-    public function generate_winner_certificate($name, $dept, $place, $competition, $p_sign, $h_sign, $c_sign, $year){
-        $params = sprintf("name=%s&degree=%s&competition=%s&year=%s&place=%s&p_sign=%s&h_sign=%s&c_sign=%s", urlencode($name), urlencode($dept), urlencode($competition), urlencode($year), urlencode($place), $p_sign, $h_sign, $c_sign);
+    public function generate_winner_certificate($name, $dept, $place, $competition, $competition_logo, $p_sign, $h_sign, $c_sign, $year){
+        $params = sprintf("name=%s&degree=%s&competition=%s&year=%s&place=%s&p_sign=%s&h_sign=%s&c_sign=%s&competition_logo=%s", urlencode($name), urlencode($dept), urlencode($competition), urlencode($year), urlencode($place), $p_sign, $h_sign, $c_sign, rawurlencode($competition_logo));
         $link = "http://localhost:5000/api/generate/winner?" . $params;
         $curl = curl_init();
 
@@ -69,6 +72,9 @@ class Generate{
         ));
 
         $response = curl_exec($curl);
+        if($response === FALSE){
+            return false;
+        }
         $response = json_decode($response, true);
         curl_close($curl);
 

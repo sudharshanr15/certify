@@ -16,7 +16,7 @@ if(strtolower($_SERVER['REQUEST_METHOD']) == "post"){
     if($name && $image['name'] && $competition){
         $file = $file_uploads->upload_image($image);
         if($file['result'] == false){
-            die($result['message']);
+            die($file['message']);
         }
     
         $result = $sub_events_obj->create($name, $competition, $file['image']);

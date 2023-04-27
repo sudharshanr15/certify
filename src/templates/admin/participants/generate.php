@@ -5,6 +5,7 @@ use Certify\Certify\core\SendMail;
 use Certify\Certify\models\Certificate;
 use Certify\Certify\models\Participants;
 use Certify\Certify\models\Signature;
+use Certify\Certify\models\Competition;
 
 $id = $_GET['id'] ?? null;
 
@@ -55,6 +56,9 @@ if(!empty($_POST)){
         }
     }
 
+    $competition_obj = new Competition;
+    $competition = $competition_obj->getFromCompetition($participant['competition']);
+
     if($is_winner == 1){
         if($place == 1){
             $place = "First";
@@ -63,9 +67,9 @@ if(!empty($_POST)){
         }else{
             $place = "Third";
         }
-        $certificate = $generate->generate_winner_certificate($participant['first_name'] . " " . $participant['last_name'], $participant['degree'], $place, $participant['competition'], $p_signature, $hod_signature, $c_signature, "2022-23");
+        $certificate = $generate->generate_winner_certificate($participant['first_name'] . " " . $participant['last_name'], $participant['degree'], $place, $participant['sub_event'], $competition['image'], $p_signature, $hod_signature, $c_signature, $competition['year']);
     }else{
-        $certificate = $generate->generate_participant_certificate($participant['first_name'] . " " . $participant['last_name'], $participant['degree'], $participant['competition'], $p_signature, $hod_signature, $c_signature, "2022-23");
+        $certificate = $generate->generate_participant_certificate($participant['first_name'] . " " . $participant['last_name'], $participant['degree'], $participant['sub_event'], $competition['image'], $p_signature, $hod_signature, $c_signature, $competition['year']);
     }
 
     $certificate = $certificate['image'];
