@@ -8,7 +8,7 @@ if(!$c){
 $file = __DIR__."/../../../assets/certificates/$c";
 $file_size = filesize($file);
 
-header('Content-Disposition: attachment; filename=Certificate.jpeg');
+header('Content-Disposition: attachment; filename=Certificate.pdf');
 header('Content-Type: application/octet-stream');
 header( "Content-length: " . $file_size );
 readfile($file);
